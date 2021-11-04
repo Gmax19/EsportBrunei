@@ -1,0 +1,53 @@
+<header>
+
+<div class="botan">
+
+
+<button type="button" onclick="openNav()" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                
+            </button>
+
+            <!-- <a href="<?php echo BASE_URL . '/index.php' ?>" class="logo">
+      <h1 class="logo-text"><span>Esport</span>Brunei</h1>
+    </a> -->
+
+   <a href="<?php echo BASE_URL . '/index.php' ?>"><img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:70px;" align="center" ></a>
+
+    <i class="fa fa-bars menu-toggle"></i>
+    <ul class="nav">
+    <li><a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="<?php echo BASE_URL . '/aboutUs.php' ?>"><i class="fa fa-question"></i> About us</a></li>
+      <li><a href="<?php echo BASE_URL . '/eventsPage.php'; ?>"><i class="fa fa-calendar"></i> Events</a></li>
+      <li><a href="<?php echo BASE_URL . '/team-profile.php' ?>" class="TeamProfile"><i class="fa fa-users"></i> Team Management</a></li>
+
+      <?php if (isset($_SESSION['id'])): ?>
+        
+        <li>
+          <a href="#"> 
+            <i class="fa fa-user"></i>
+          </a>
+          <ul>
+            <?php if($_SESSION['admin']  == 1){ ?>
+              <li> <a href="<?php echo BASE_URL . '/admin/dashboard.php' ?>"></i>Dashboard </a></li>
+            <?php } ?>
+            <?php if($_SESSION['admin'] == 2){ ?>
+            <li><a href="<?php echo BASE_URL . '/moderator/dashboard.php' ?>" class="moderator"></i> Moderator</a></li>
+            <?php } ?>
+            <!-- soon to be changed or used -->
+            <?php if($_SESSION['admin'] == 3){ ?> 
+            <li><a href="<?php echo BASE_URL . '/organiser/dashboard.php' ?>" class="organiser"></i> Organiser</a></li>
+             <?php } ?>
+            <li><a href="<?php echo BASE_URL . '/profile.php' ?>" class="profile">Profile</a></li>
+            <li><a href="<?php echo BASE_URL . '/logout-user.php' ?>" class="logout">Logout</a></li>
+          </ul>
+        </li>
+      <?php else: ?>
+       <!-- <li><a href=" <?php echo BASE_URL . '/register.php' ?> ">Sign Up</a></li> -->
+       <!-- <li><a href="<?php echo BASE_URL . '/login.php' ?>">Login</a></li> -->
+
+       <li><a href=" <?php echo BASE_URL . '/login-user.php' ?> "><i class="fa fa-user" ></i> login/Register</a></li>
+      <?php endif; ?>
+    </ul>
+    </div>
+</header>
