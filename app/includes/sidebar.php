@@ -62,6 +62,7 @@
         <li><h5><a href= <?php echo BASE_URL . "/bookmarkpost.php" ?> ><i class="far fa-bookmark"></i> Bookmark posts </a></h5></li>  
         <li><h5><a href="<?php echo BASE_URL . '/logout-user.php' ?>" class="logout">Logout</a></h5></li>
         <?php } else { ?>
+            
             <!-- IF GUEST USER PUNYA SIDEBAR -->
         <li><h5><a href= "contact.php" ><i class="fa fa-address-book"></i> Help </a></h5></li>
         <li><h5><a href= <?php echo BASE_URL . "/bookmarkpost.php" ?> ><i class="far fa-bookmark"></i> Bookmark posts </a></h5></li>  
