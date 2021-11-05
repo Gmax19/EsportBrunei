@@ -16,7 +16,7 @@
 <body >
 
   <div  class="wrapper">
-    <header>Send us a Message if there are any or give us a call at <br>
+    <header>Send us a Message  if there are any or give us a call at <br>
       <a href="tel:7258975" ><i class="fas fa-phone"></i> +673 7258975</span> </a>
 </header>
     <form action="#">
