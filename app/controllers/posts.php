@@ -164,11 +164,11 @@ if (isset($_GET['bookmark']) && isset($_GET['p_id'])) {
     $_SESSION['message'] = "This post is now listed in your bookmark post lists !";
     $_SESSION['type'] = "success";
     if ($_SESSION['admin'] == 1) {
-        header('location: ' . BASE_URL . '/index.php'); 
+        header('location: ' . BASE_URL . '/bookmarkpost.php'); 
     } else if($_SESSION['admin'] == 2) {
-        header('location: ' . BASE_URL . '/index.php');
+        header('location: ' . BASE_URL . '/bookmarkpost.php');
     } else {
-        header('location: ' . BASE_URL . '/index.php');
+        header('location: ' . BASE_URL . '/bookmarkpost.php');
     }
     exit();
 }
