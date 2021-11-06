@@ -18,7 +18,7 @@
     <ul class="nav">
     <li><a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa fa-home"></i> Home</a></li>
       <li><a href="<?php echo BASE_URL . '/aboutUs.php' ?>"><i class="fa fa-question"></i> About us</a></li>
-      <li><a href="<?php echo BASE_URL . '/eventsPage.php'; ?>"><i class="fa fa-calendar"></i> Events</a></li>
+      <li><a href="<?php echo BASE_URL . '/eventsPage.php'; ?>"><i class="fa fa-gamepad"></i> Events</a></li>
       <li><a href="<?php echo BASE_URL . '/team-profile.php' ?>" class="TeamProfile"><i class="fa fa-users"></i> Team Management</a></li>
 
       <?php if (isset($_SESSION['id'])): ?>
