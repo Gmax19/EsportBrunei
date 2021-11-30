@@ -16,14 +16,15 @@
             href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
             integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
             crossorigin="anonymous">
+            
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="assets/css/style.css">
-
+        <link rel="stylesheet" href="assets/css/prof.css">
         <!-- page Styling -->
         <!-- <link rel="stylesheet" href="assets/css/page.css"> -->
 
@@ -40,18 +41,15 @@
         <div class="page-wrapper">
 
         <div class="sidebar-wrapper">
-
         <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+        </div>
 
-</div>
 
-
-                <div class="auth-content" align="center" >
+                <!-- <div class="auth-content" align="center" > -->
                 <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
-
                 <?php include(ROOT_PATH . "/app/includes/messages.php"); ?> 
-                    <h1 class="page-title">Welcome to your profile</h1>
-
+                    <!-- <h1 class="page-title">Welcome to your profile</h1> -->
+                </div> 
 
                     <?php  
                     // to get user details by fetching user punya database table 
@@ -63,68 +61,129 @@
                         $fetch = mysqli_fetch_assoc($res);
                         $pic = $fetch['pic'];
                         $phone_number = $fetch['phone_number'];
+                        $instagram = $fetch['instagram'];
+                        $steam = $fetch['steam'];
+                        $discord = $fetch['discord'];
+                        $created = $fetch['created_at'];
+ 
+                        $participants = "SELECT *, p.id as paymentid  FROM payments as p
+                        inner join users as u on p.user_id = u.id
+                        inner JOIN events as e on e.id = p.product_id where u.id = $id; ";
                     }
                     
                     ?>
                     
-                    
-
-                    <form action="profile.php" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" >
-                       
-                        <div   >
-                            <h3 >Profile Picture</h3>
-                            <input type="file" name="image" class="text-input"  ></input>
-                        </div>
-                        <div class="text-center" style="max-width:1000px; ">
-                        <img src="<?php echo BASE_URL . '/assets/profile/' . $pic; ?>" class="rounded" style="max-width:30%;"  alt="Profile Image">
-                          </div>
-                        <div > 
-                            <h3>Username</h3>
-                            <input type="text" name="username" value="<?php echo $_SESSION['username']; ?>" class="text-input" style = "text-align:center;">
-                        </div>
-                        
-                        <div>
-                            <h3>Email</h3>
-                            <input type="email" name="email" value="<?php echo $_SESSION['email']; ?>" class="text-input" style = "text-align:center;" >
-                        </div>
-                        <div>
-                            <h3>Phone Number</h3>
-                            <input type="number" name="phone_number" value="<?php echo $phone_number; ?>" class="text-input" style = "text-align:center;" >
-                        </div>
-                        <div>
-                            <h3>Bio</h3>
-                            <textarea type="text" name="bio"  class="text-input"  ><?php echo $_SESSION['bio']; ?></textarea>
-                        </div>
-                        <div>
-                            <h3>Password</h3>
-                            <input type="password" name="password" Placeholder = "Please re-enter your password to avoid errors" class="text-input" style = "text-align:center;" required></input>
-                        </div>
-                        <div>
-                            <h3>Password Confirmation </h3>
-                            <input type="password" name="passwordConf"  class="text-input" style = "text-align:center;" required></input>
-                        </div>
-                        <br>
-                        <div>
-                            <button type="submit" name="update-profile" class="btn btn-big">Update Profile</button>
-                           <a href="<?php echo BASE_URL . '/index.php' ?>" class="btn btn-big">Cancel Update</a>
-
-                        </div>
-
-
-                        
-                    </form>
-                   
-                    </div>
-
-                </div>
-
-            </div>
             <!-- // page Content -->
+<div class="wrapper">
+ 
+    <div class="left">
+     <div class="users">
+        <img src="<?php echo BASE_URL . '/assets/profile/' . $pic; ?>" 
+        alt="user" width="75%" height="auto">
+        <h1><i class="fas fa-at"></i> <?php echo $_SESSION['username']; ?></h1>
+         <p><?php echo $_SESSION['bio']; ?></p>
+      </div>   
+      
+         <div class="summoned">
+            <h4><i class="fa fa-gamepad"></i> Summoned on</h4>
+            <p><?php echo date('F j, Y', strtotime($created)); ?></p>
+         </div>
+
+        <!-- <div class="badges">
+        <h3>Badges</h3>
+        <img src="assets/profile_badge/b3.png" 
+        alt="user" width="13%" height="auto">
+
+        <img src="assets/profile_badge/b2.png" 
+        alt="user" width="15%" height="auto">
+
+        <img src="assets/profile_badge/b1.png" 
+        alt="user" width="15%" height="auto">
+        </div> -->
+    </div>
+
+    <div class="right">
+
+        <div class="info">
+            <h3><i class="fas fa-info-circle"></i> Information</h3>
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Email <i class="far fa-envelope"></i></h4>
+                    <p><?php echo $_SESSION['email']; ?> </p>
+                 </div>
+                 <div class="data">
+                   <h4>Phone <i class="fas fa-phone"></i></h4>
+                    <p>+673 <?php echo $phone_number; ?></p>
+              </div>
+            </div>
+        </div>
+      
+      <div class="projects">
+            <h3><i class="fas fa-trophy"></i> Achievements</h3>
+            <div class="projects_data">
+                 <div class="data">
+                   <?php $res = mysqli_query($conn, $participants);
+                          if (!empty($res)){
+                            if(mysqli_num_rows($res) > 0){
+                              $fetch = mysqli_fetch_all($res,MYSQLI_ASSOC);
+                   ?>
+                   <table>
+                     <thead>
+                    <th><h4><i class="fas fa-certificate"></i> Events Joined:</h4></th>
+                    <th><h4><i class="far fa-calendar-check"></i> Joined:</h4></th>
+                    <th><h4><i class="fas fa-users-cog"></i> Category:</h4></th>
+                    <th><h4><i class="fas fa-file-invoice-dollar"></i> Invoice:</h4></th>
+                  </thead>
+                    <?php                          
+                          foreach ($fetch as $key => $participant){   ?>
+                    <tr>
+                    <td><p><a href="eventSingle.php?id=<?php echo $participant['id']; ?>"><?php echo $key + 1; ?>. <?php echo $participant['title']; ?></a></p></td>
+                    <td><p><?php echo date('F j, Y', strtotime($participant['created'])); ?></p></td>
+                    <td><p><?php echo $participant['category']; ?></p></td>
+                    <td><p><a href="app/payment/payment-status.php?id=<?php echo $participant['paymentid']; ?>">View</a></p></td>
+                      </tr>
+                    <?php
+                                        } 
+                                    } else { ?>
+                                      <p>You have not participated in any events yet...</p>
+                                   <?php  }
+                                  ?>
+                   </table>
+                   <?php } ?>
+                 </div>
+            </div>
+        </div>
+        <div class="projects">
+        <div class="links">
+            <h3><i class="fas fa-user-plus"></i> Social Media</h3>
+            <ul>
+            <div class="data">
+              
+              <li><a href="https://steamcommunity.com/profiles/<?php echo $steam?>/"><i class="fab fa-steam"></i> <?php echo $steam?></a></li>
+            </div>  
+
+            <div class="data">
+              <li><a href="https://www.instagram.com/<?php echo $instagram?>/"><i class="fab fa-instagram"></i> <?php echo $instagram?></a></li>
+            </div>
+            
+            <div class="data">
+              <li style="width:160px;"><a href="#"><i class="fab fa-discord"></i> <?php echo $discord ?></a></li>
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <div class="edit">
+        <a href="<?php echo BASE_URL . '/edit-profile.php' ?>" class="batn">Edit Profile</a>
+      </div>
+
+      
+    </div>
+</div>
 
         
         <!-- // Page Wrapper -->
-
+        </div>
 
         <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
 
@@ -136,7 +195,7 @@
             src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
         <!-- Custom Script -->
         <script src="assets/js/scripts.js"></script>
-
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <script>
   /* Set the width of the side navigation to 250px */
 function openNav() {

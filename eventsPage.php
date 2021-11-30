@@ -31,7 +31,7 @@ if (isset($_GET['t_id'])) {
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
   <!-- Custom Styling -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -63,9 +63,7 @@ if (isset($_GET['t_id'])) {
     <!--Event Post Slider -->
 
     <div class="post-slider">
-      <h1 class="slider-title">Trending Events</h1>
-      <i class="fas fa-chevron-left prev"></i>
-      <i class="fas fa-chevron-right next"></i>
+      <h1 class="slider-title" style="color:white;">Trending Events</h1>
 
       <div class="post-wrapper">
 
@@ -73,10 +71,10 @@ if (isset($_GET['t_id'])) {
           <div class="post">
             <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="slider-image">
             <div class="post-info">
-              <h4><a href="eventSingle.php?id=<?php echo $post['eventid']; ?>"><?php echo $post['title']; ?></a></h4>
-              <i class="far fa-user"> <?php echo $post['username']; ?></i>
-              &nbsp;
-              <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['created_at'])); ?></i>
+              <h3><?php echo $post['title']; ?></h3>
+              <!-- <h4>Post created by <?php echo $post['username']; ?></h4>
+             <h4>created at <?php echo date('F j, Y', strtotime($post['created_at'])); ?></h4> -->
+             <h4><a href="eventsingle.php?id=<?php echo $post['eventid']; ?>">More Details</a></h4>
             </div>
           </div>
         <?php endforeach; ?>
@@ -98,7 +96,7 @@ if (isset($_GET['t_id'])) {
           <div class="post clearfix">
             <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-image">
             <div class="post-preview">
-              <h2><a href="eventSingle.php?id=<?php echo $post['eventid']; ?>"><?php echo $post['title']; ?></a></h2>
+              <h2><a href="eventtest.php?id=<?php echo $post['eventid']; ?>"><?php echo $post['title']; ?></a></h2>
               <i class="far fa-user"> <?php echo $post['username']; ?></i>
               &nbsp;
               <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['created_at'])); ?></i>

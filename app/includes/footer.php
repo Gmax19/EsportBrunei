@@ -4,12 +4,12 @@
 
       <div class="footer-section about">
        <img src="<?php echo BASE_URL . "/assets/logo/logo2.png" ?>" style="width:25%;" ?>
-        <h5>
+        <h5 style ="color: #686868">
          EsportBrunei is an one stop centre for gamers
 </h5>
-        <div class="contact">
-          <h5><a href="tel:7258975" ><i class="fas fa-phone"></i> &nbsp; +673 7258975</span></a></h5>
-          <h5><span><i class="fas fa-envelope"></i> &nbsp; FYPESport2021@gmail.com</span></h5>
+        <div class="contact" >
+          <h5 style ="color: #686868"><a href="tel:7258975" ><i class="fas fa-phone"></i> &nbsp; +673 7258975</span></a></h5>
+          <h5 style ="color: #686868"><span><i class="fas fa-envelope"></i> &nbsp; FYPESport2021@gmail.com</span></h5>
         </div>
         <!-- <div class="socials">
           <a href="#"><i class="fab fa-facebook"></i></a>

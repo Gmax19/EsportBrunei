@@ -1,6 +1,5 @@
 <?php include("path.php"); ?>
-<?php include(ROOT_PATH . "/app/controllers/posts.php");
-?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,11 +15,12 @@
             crossorigin="anonymous">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/admin.css">
 
         <!-- Admin Styling -->
 
@@ -50,6 +50,7 @@
 
                     <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
 
+        <?php if (isset($_SESSION['id'])){ ?>
                     <table>
                         <thead>
                             <th>No.</th>
@@ -62,10 +63,10 @@
                                     <td><?php echo $key + 1; ?></td>
                                     <td><?php echo $bookmark['title'] ?></td>
                                     <td><a href="Single.php?id=<?php echo $bookmark['id']; ?>" class="view">view post</a></td>
-                                    <td><a href="bookmarkpost.php?bookmark=0&p_id=<?php echo $bookmark['id'] ?>" class="remove">remove from bookmark</a></td>                                    
+                                    <td><a href="bookmarkpost.php?bookmarkid=<?php echo $bookmark['bookmarkid'] ?>" class="remove">remove from bookmark</a></td>                                    
                                 </tr>
                             <?php endforeach; ?>
-
+                                <?php } ?>
                         </tbody>
                     </table>
 
@@ -77,7 +78,8 @@
         </div>
         <!-- // Page Wrapper -->
 
-        
+          <?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+
 
         <!-- JQuery -->
         <script

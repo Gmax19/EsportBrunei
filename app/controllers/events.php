@@ -12,6 +12,8 @@ $events = selectEvent($table ,  array('published'=> 1));
 
 $Adminevents = selectEvent($table);
 
+// $pCount = SELECT COUNT('payment_status') FROM 'payments' WHERE 'product_id'='61';
+
 // $events = selectEvent($table , $table2);
 
 
@@ -23,6 +25,12 @@ $body = "";
 $topic_id = "";
 $published = "";
 $proof = "";
+$s_price = "";
+$category = "";
+$participant_limit= "";
+
+
+
 
 // to get the id of events 
 if (isset($_GET['id'])) {
@@ -31,6 +39,9 @@ if (isset($_GET['id'])) {
     $id = $post['id'];
     $title = $post['title'];
     $body = $post['body'];
+    $s_price = $post['s_price'];
+    $category = $post['category'];
+    $participant_limit = $post['participant_limit'];
     $topic_id = $post['topic_id'];
     $published = $post['published'];
     $image = $post['image'];
@@ -73,7 +84,7 @@ if (isset($_GET['published']) && isset($_GET['p_id'])) {
 }
 
 
-//to create a new event 
+//to create a new event  //add counter stuff sql query for participant_limit
 if (isset($_POST['add-post'])) {
     // adminOnly();
     $errors = validatePost($_POST);
@@ -112,6 +123,10 @@ if (isset($_POST['add-post'])) {
     } else {
         $title = $_POST['title'];
         $body = $_POST['body'];
+        $s_price= $_POST['s_price'];
+        $category= $_POST['category'];
+        $participant_limit= $_POST['participant_limit'];
+        $title = $_POST['title'];
         $topic_id = $_POST['topic_id'];
         $published = isset($_POST['published']) ? 1 : 0;
     }
@@ -137,6 +152,8 @@ if (isset($_POST['update-post'])) {
        array_push($errors, "Event image required");
     }
 
+    //function for counter of participations of upload
+
     if (count($errors) == 0) {
         $id = $_POST['id'];
         unset($_POST['update-post'], $_POST['id']);
@@ -154,8 +171,11 @@ if (isset($_POST['update-post'])) {
         } else {
         $title = $_POST['title'];
         $body = $_POST['body'];
+        $s_price= $_POST['s_price'];
+        $category= $_POST['category'];
         $topic_id = $_POST['topic_id'];
         $published = isset($_POST['published']) ? 1 : 0;
     }
     }
 }
+

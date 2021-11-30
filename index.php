@@ -4,7 +4,7 @@ include(ROOT_PATH . "/app/controllers/topics.php");
 
 // gets all the posts from post table in database
 $posts = array();
-$postsTitle = 'Recent Posts';
+$postsTitle = 'Forum Posts';
 
 
 if (isset($_GET['t_id'])) {
@@ -16,7 +16,7 @@ if (isset($_GET['t_id'])) {
 } else {
   $posts = getPublishedPosts();
 }
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +30,7 @@ if (isset($_GET['t_id'])) {
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
   <!-- Custom Styling -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -61,20 +60,21 @@ if (isset($_GET['t_id'])) {
     <!-- Post Slider -->
 
     <div class="post-slider">
-      <h1 class="slider-title">Trending Posts</h1>
-      <i class="fas fa-chevron-left prev"></i>
-      <i class="fas fa-chevron-right next"></i>
+      <h1 class="slider-title" style="color:white;">Trending Posts</h1>
+      
 
       <div class="post-wrapper">
 
         <?php foreach ($posts as $post): ?>
           <div class="post">
+             
             <img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="slider-image">
+             
             <div class="post-info">
-              <h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h4>
-              <i class="far fa-user"> <?php echo $post['username']; ?></i>
-              &nbsp;
-              <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['created_at'])); ?></i>
+              <h3><?php echo $post['title']; ?></h3>
+              <!-- <h4>Post created by <?php echo $post['username']; ?></h4>
+             <h4>created at <?php echo date('F j, Y', strtotime($post['created_at'])); ?></h4> -->
+             <h4><a href="single.php?id=<?php echo $post['id']; ?>">More Details</a></h4>
             </div>
           </div>
         <?php endforeach; ?>
@@ -90,6 +90,23 @@ if (isset($_GET['t_id'])) {
 
       <!-- Main Content -->
       <div class="main-content">
+
+      <div class="section search">
+
+          <form action="index.php" method="post">
+          <input type="text" name="search-term" class="text-input" placeholder="Search...">
+          </form>
+        </div>
+
+        <!-- <div class="section topics">
+          <h2 class="section-title">Topics</h2>
+          <ul>
+            <?php foreach ($topics as $key => $topic): ?>
+              <li><a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name'] ?>"><?php echo $topic['name']; ?></a></li>
+            <?php endforeach; ?>
+          </ul>
+        </div> -->
+
         <h1 class="recent-post-title"><?php echo $postsTitle ?></h1>
 
         <?php foreach ($posts as $post): ?>
@@ -113,7 +130,7 @@ if (isset($_GET['t_id'])) {
       </div>
       <!-- // Main Content -->
 <!--  This is the search -->
-      <div class="sidebar">
+      <!-- <div class="sidebar">
 
         <div class="section search">
           <h2 class="section-title">Search</h2>
@@ -134,7 +151,7 @@ if (isset($_GET['t_id'])) {
 
         
 
-      </div>
+      </div> -->
 
     </div>
     <!-- // Content -->

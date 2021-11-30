@@ -34,6 +34,9 @@ $email = '';
 $password = '';
 $passwordConf = '';
 $bio = '';
+$instagram = '';
+$steam = '';
+$discord = '';
 $details = '';
 $pic = '';
 $proof = '';
@@ -49,6 +52,9 @@ function loginUser($user)
     $_SESSION['username'] = $user['username'];
     $_SESSION['email'] = $user['email'];
     $_SESSION['bio'] = $user['bio'];
+    $_SESSION['instagram'] = $user['instagram'];
+    $_SESSION['steam'] = $user['steam'];
+    $_SESSION['discord'] = $user['discord'];
     $_SESSION['pic'] = $user['pic'];
     $_SESSION['phone_number'] = $user['phone_number'];
     $_SESSION['organiser_proof'] = $user['proof'];
@@ -218,9 +224,7 @@ if (isset($_POST['update-profile'])) {
         } else {
             array_push($errors, "Failed to upload image");
         }
-    } else {
-       array_push($errors, "Profile image required");
-    }
+    } 
 
     if (count($errors) === 0) {
         $id = $_POST['id'];
@@ -234,6 +238,9 @@ if (isset($_POST['update-profile'])) {
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['bio'] = $_POST['bio'];
+        $_SESSION['instagram'] = $_POST['instagram'];
+        $_SESSION['steam'] = $_POST['steam'];
+        $_SESSION['discord'] = $_POST['discord'];
         $_SESSION['pic'] = $_POST['pic'];
         $_SESSION['phone_number'] = $_POST['phone_number'];
         header('location: ' . BASE_URL . '/profile.php'); 
@@ -243,6 +250,9 @@ if (isset($_POST['update-profile'])) {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $bio = $_POST['bio'];
+        $instagram = $_POST['instagram'];
+        $steam = $_POST['steam'];
+        $discord = $_POST['discord'];
         $phone_number = $_POST['phone_number'];
         $password = $_POST['password'];
         $passwordConf = $_POST['passwordConf'];
@@ -295,16 +305,25 @@ if (isset($_POST['organiser-register'])) {
     }
 }
 
-// help to get user info for all update/edit/delete
+// help to get user info for all update/edit/delete and view other users profile etc using the get
 if (isset($_GET['id'])) {
     $user = selectOne($table, ['id' => $_GET['id']]);
     
     $id = $user['id'];
+    $pic = $user['pic'];
     $username = $user['username'];
     $admin = $user['admin'];
     $proof = $user['proof'];
-   // $moderator = $user['moderator'];
+    $bio = $user['bio'];
     $email = $user['email'];
+    $phone = $user['phone_number'];
+    $instagram = $user['instagram'];
+    $steam = $user['steam'];
+    $discord = $user['discord'];
+    $created = $user['created_at'];
+
+
+
 }
 
 //onclick login button
@@ -360,6 +379,23 @@ if (isset($_GET['blocked']) && isset($_GET['p_id'])) {
     exit();
 }
 
+//function for banning organiser temporary 
+if (isset($_GET['organiser_blocked']) && isset($_GET['p_id'])) {
+    adminOnly();
+    $blocked = $_GET['organiser_blocked'];
+    $user = $_GET['p_id'];
+    $count = update($table, $user, ['blocked' => $blocked]);
+    $_SESSION['message'] = "User status changed successfully !";
+    $_SESSION['type'] = "success";
+    if ($_SESSION['admin'] == 1) {
+        header('location: ' . BASE_URL . '/admin/organiserlist/accepted.php'); 
+    } else if($_SESSION['admin'] == 2) {
+        header('location: ' . BASE_URL . '/moderator/organiserlist/accepted.php');
+    } else {
+        header('location: ' . BASE_URL . '/index.php');
+    }
+    exit();
+}
 
 //function for pending organisers
 if (isset($_GET['admin']) && isset($_GET['p_id'])) {

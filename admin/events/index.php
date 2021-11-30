@@ -17,8 +17,8 @@ adminOnly();
             crossorigin="anonymous">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="../../assets/css/style.css">
@@ -70,7 +70,8 @@ adminOnly();
                                     <td><?php echo $post['username'] ?></td>
                                     <td><a href="edit.php?id=<?php echo $post['eventid']; ?>" class="edit">edit</a></td>
                                     <td><a href="edit.php?delete_id=<?php echo $post['eventid']; ?>" class="delete">delete</a></td>
-
+                                    <td><a href="partlist.php?id=<?php echo $post['eventid']; ?>" >participants</a></td>
+                                    
                                     <?php if ($post['published']): ?>
                                         <td><a href="edit.php?published=0&p_id=<?php echo $post['eventid'] ?>" class="unpublish">unpublish</a></td>
                                     <?php else: ?>

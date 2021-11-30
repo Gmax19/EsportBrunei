@@ -17,8 +17,8 @@ adminOnly();
             crossorigin="anonymous">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Candal|Lora"
-            rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 
         <!-- Custom Styling -->
         <link rel="stylesheet" href="../../assets/css/style.css">
@@ -67,6 +67,23 @@ adminOnly();
                         <div>
                             <label>Image</label>
                             <input type="file" name="image" class="text-input">
+                        </div>
+                        <div>
+                            <label>Fee/Price</label>
+                            <input type="number" name="s_price" class="text-input">
+                        </div>
+                        <div>
+                            <label>category</label>
+                            <select name="category" class="text-input">
+                                <option value="Solo">Solo</option>
+                                <option value="Duo">Duo</option>
+                                <option value="Team">Team (5 person)</option>
+                                <option value="Team (4 person)">Team (4 person)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Participant limit</label>
+                            <input type="number" name="participant_limit" class="text-input">
                         </div>
                         <div>
                             <label>Topic</label>

@@ -36,7 +36,7 @@ $posts = selectAll('posts', ['published' => 1]);
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
   <!-- Custom Styling -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -85,10 +85,9 @@ $posts = selectAll('posts', ['published' => 1]);
                 <br>
                   <h5>share now !</h5>
             <?php include(ROOT_PATH . "/app/includes/share.php"); ?>    
+            
             <h5>save/bookmark this post !</h5>
-
-          <a href="single.php?bookmark=1&p_id=<?php echo $post['id'] ?>" class="bookmark"><img src="<?php echo BASE_URL . '/assets/logo/bookmark.png' ?>" alt="bookmark link" style = "max-width:20px" /></a>
- 
+          <a href="bookmarkpost.php?bookmark=1&p_id=<?php echo $post['id'] ?>" class="bookmark"><img src="<?php echo BASE_URL . '/assets/logo/bookmark.png' ?>" alt="bookmark link" style = "max-width:20px" /></a>
           </div>
 
         </div>
@@ -98,7 +97,7 @@ $posts = selectAll('posts', ['published' => 1]);
       <!-- // Main Content -->
 
       <!-- Sidebar -->
-      <div class="sidebar single">
+      <!-- <div class="sidebar single">
 
         <div class="section popular">
           <h2 class="section-title">Popular</h2>
@@ -124,7 +123,7 @@ $posts = selectAll('posts', ['published' => 1]);
 
           </ul>
         </div>
-      </div>
+      </div> -->
       <!-- // Sidebar -->
 
     </div>

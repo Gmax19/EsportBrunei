@@ -4,15 +4,13 @@
 
 
 <button type="button" onclick="openNav()" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
+<img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:105px;" align="center" >
                 
             </button>
-
+           
             <!-- <a href="<?php echo BASE_URL . '/index.php' ?>" class="logo">
       <h1 class="logo-text"><span>Esport</span>Brunei</h1>
     </a> -->
-
-   <a href="<?php echo BASE_URL . '/index.php' ?>"><img src="<?php echo BASE_URL . "/assets/logo/logo3.png" ?>" style="width:70px;" align="center" ></a>
 
     <i class="fa fa-bars menu-toggle"></i>
     <ul class="nav">
@@ -25,8 +23,7 @@
         
         <li>
           <a href="#"> 
-            <i class="fa fa-user"></i>
-          </a>
+          <img src="<?php echo BASE_URL . '/assets/logo/logo3.png' ?>" class="rounded" style="border-radius:50%;max-width:40px;" alt="Profile Image">         </a>
           <ul>
             <?php if($_SESSION['admin']  == 1){ ?>
               <li> <a href="<?php echo BASE_URL . '/admin/dashboard.php' ?>"></i>Dashboard </a></li>
