@@ -60,7 +60,7 @@ if (isset($_GET['t_id'])) {
     <!-- Post Slider -->
 
     <div class="post-slider">
-      <h1 class="slider-title" style="color:white;">Trending Posts</h1>
+      <h1 class="slider-title" style="color:white;">Recent Posts</h1>
       
 
       <div class="post-wrapper">
