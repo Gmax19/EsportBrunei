@@ -5,7 +5,7 @@ include(ROOT_PATH . "/app/controllers/events.php");
 
 // gets all the events from events table in database
 $posts = array();
-$postsTitle = 'Recent Events';
+$postsTitle = 'Upcoming Events';
 
 if (isset($_GET['t_id'])) {
   $posts = getPostsByTopicId($_GET['t_id']);
@@ -63,7 +63,7 @@ if (isset($_GET['t_id'])) {
     <!--Event Post Slider -->
 
     <div class="post-slider">
-      <h1 class="slider-title" style="color:white;">Trending Events</h1>
+      <h1 class="slider-title" style="color:white;">Recent Events</h1>
 
       <div class="post-wrapper">
 
