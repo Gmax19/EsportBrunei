@@ -39,9 +39,9 @@
         <!-- page Page Wrapper -->
         <div class="page-wrapper">
 
-        <div class="sidebar-wrapper">
+        <!-- <div class="sidebar-wrapper">
         <?php include(ROOT_PATH . "/app/includes/Moderatorsidebar.php"); ?>
-        </div>
+        </div> -->
 
 
                 <!-- <div class="auth-content" align="center" > -->
